@@ -1,0 +1,23 @@
+#spring:
+#  datasource:
+#    url: jdbc:postgresql:localhost:5432/BMA #KAFKA-CONSUMER
+#    username: postgres
+#    password: omeunome
+
+---
+spring:
+  profiles:
+    active: local
+
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+  kafka:
+    topic: "library-events"
+    consumer:
+      bootstrap-servers: localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.IntegerDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      group-id: library-events-listener-group
