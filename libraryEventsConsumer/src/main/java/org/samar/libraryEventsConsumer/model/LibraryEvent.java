@@ -15,7 +15,6 @@ public class LibraryEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int libraryEventId;
-    //@Enumerated(EnumType.STRING)
     private String  libraryEventType;
     @OneToOne
     private Book book;

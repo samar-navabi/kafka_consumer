@@ -7,20 +7,33 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.samar.libraryEventsConsumer.model.LibraryEvent;
 import org.samar.libraryEventsConsumer.repo.LibraryEventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.RecoverableDataAccessException;
+import org.springframework.kafka.core.KafkaTemplate;
+import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @Slf4j
-public class LibraryEventsService
-{
-    @Autowired
-    private LibraryEventRepository libraryEventRepository;
+public class LibraryEventsService {
 
     @Autowired
-    private ObjectMapper objectMapper;
+    ObjectMapper objectMapper;
 
-    public void processLibraryEvent(ConsumerRecord<Integer, String> record) throws JsonProcessingException {
-        //return null;
-        LibraryEvent libraryEvent =  objectMapper.readValue(record.value(), LibraryEvent.class);
+    @Autowired
+    KafkaTemplate<Integer,String> kafkaTemplate;
+
+    @Autowired
+    private LibraryEventRepository libraryEventsRepository;
+
+    public void processLibraryEvent(ConsumerRecord<Integer,String> consumerRecord) throws JsonProcessingException
+    {
+        var libraryEvent = objectMapper.readValue(consumerRecord.value(), LibraryEvent.class);
+        log.info("libraryEvent Mapped: {} ", libraryEvent.getBook());
     }
+
+
+
+
 }
