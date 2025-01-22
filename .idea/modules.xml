@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/libraryEventsConsumer.iml" filepath="$PROJECT_DIR$/.idea/libraryEventsConsumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/kafka-consumer.iml" filepath="$PROJECT_DIR$/.idea/kafka-consumer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libraryEventsConsumer/libraryEventsConsumer.iml" filepath="$PROJECT_DIR$/libraryEventsConsumer/libraryEventsConsumer.iml" />
     </modules>
   </component>
 </project>

@@ -12,8 +12,14 @@ public class LibraryEventsConsumer
 {
 
     @KafkaListener(topics = {"library-events"})
-    public void onMessage(ConsumerRecord<Integer, String> record)
+    public ConsumerRecord<Integer, String> onMessage(ConsumerRecord<Integer, String> record)
     {
         log.info("Consumer fetch the record: {}", record);
+        //log.info(record.value());
+
+        String data = record.value();
+        System.out.println(data);
+
+        return record;
     }
 }
